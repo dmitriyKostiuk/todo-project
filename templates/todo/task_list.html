@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="px-4">
+    <h1>
+      👨‍🦱 TODO list
+      <a href="{% url 'todo:task-create' %}" class="btn btn-primary link-to-page">
+        Add task
+      </a>
+    </h1>
+
+
+    {% if task_list %}
+
+    {% for task in task_list %}
+
+        <div>{{ task.content }}
+          {% if task.is_done %}
+          <span class="text-info">Done</span>
+          <a class="btn btn-info inline" href="{% url 'todo:task-change-is-done' pk=task.id %}">Undo</a>
+          {% else %}
+          <span class="text-danger">Not Done</span>
+          <a class="btn btn-secondary inline" href="{% url 'todo:task-change-is-done' pk=task.id %}">Complete</a>
+          {% endif %}
+
+
+        </div>
+        <div>{{ task.datetime }}
+          {% if task.deadline %}
+            <span class="text-info"> Deadline
+            {{ task.deadline }}
+           {% endif %}</span></div>
+        <a href="{% url 'todo:task-update' pk=task.id %}">Update</a>
+        <a href="{% url 'todo:task-delete' pk=task.id %}">Delete</a>
+        <hr>
+    {% endfor %}
+
+    {% else %}
+      <p>There are no tags in the service.</p>
+    {% endif %}
+</div>
+{% endblock %}

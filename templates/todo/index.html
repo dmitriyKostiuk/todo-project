@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="h4 px-4">
+  <h1>🏠 To do service Home</h1>
+    <table>
+       <thead>
+         <th>
+            <h2>Dynamic content</h2>
+            <p>The To do service has the following record counts:</p>
+            <ul class="h3">
+              <li>Tasks: {{ num_tasks }}</li>
+              <li>Tags: {{ num_tags }}</li>
+            </ul>
+
+            <p>You have visited this page
+              {{ num_visits }} time{{ num_visits|pluralize }}.
+              </p>
+          </th>
+       </thead>
+</table>
+  </div>
+{% endblock %}

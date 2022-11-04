@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="h4 px-4">
+  <h1>
+    {{ tag.name }}
+
+    Tasks
+
+  }
+
+  </h1>
+  <hr>
+  <ul>
+    {% for task in tag.tasks.all %}
+      <li>{{ driver.content }} ({{ driver.datetime }} {{ driver.deadline }} {{ driver.is_done }})</li>
+    {% empty %}
+    <div>There are no tasks</div>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

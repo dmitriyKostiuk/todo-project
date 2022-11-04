@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="px-4">
+    <h1>
+      👨‍🦱 TAGS
+      <a href="{% url 'todo:tag-create' %}" class="btn btn-primary link-to-page">
+        Add
+      </a>
+    </h1>
+
+
+    {% if tag_list %}
+
+    {% for tag in tag_list %}
+
+        <div>{{ tag.name }}</div>
+        <a href="{% url 'todo:tag-update' pk=tag.id %}">Update</a>
+        <a href="{% url 'todo:tag-delete' pk=tag.id %}">Delete</a>
+        <hr>
+    {% endfor %}
+
+    {% else %}
+      <p>There are no tags in the service.</p>
+    {% endif %}
+</div>
+{% endblock %}
